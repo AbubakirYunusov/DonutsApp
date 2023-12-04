@@ -4,6 +4,6 @@ import com.example.donutsapp.data.model.FoodModel
 
 interface GetAllFoodsUseCase {
 
-   suspend fun getAllFoods(): List<FoodModel>
+    suspend fun getAllFoods(): List<FoodModel>
 
 }

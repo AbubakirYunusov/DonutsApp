@@ -6,7 +6,7 @@ private const val SHARED_PREFERENCES_KEY = "SHARED_PREFERENCES_KEY"
 private const val USER_SIGN_PREFERENCES_KEY = "USER_SIGN_PREFERENCES_KEY"
 
 class UserEnteredSharedPref(
-    private val context: Context,
+    context: Context,
 ) {
 
     private val sharedPreferences = context.getSharedPreferences(

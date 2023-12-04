@@ -9,9 +9,10 @@ import com.example.animeapp.databinding.FoodItemBinding
 import com.example.donutsapp.data.model.FoodModel
 
 class FoodAdapter(
+    private val listener: FoodsitemClickListener
 ) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
-    var foodList = mutableListOf<FoodModel>()
+    private var foodList = mutableListOf<FoodModel>()
 
     fun updateFoodList(movieList: List<FoodModel>) {
         foodList.clear()
@@ -26,6 +27,14 @@ class FoodAdapter(
             binding.textView.text = foodModel.foodName
             binding.textView2.text = foodModel.foodDescription
             binding.textView3.text = foodModel.foodPrice.toString()
+
+            binding.cardView.setOnClickListener {
+                listener.onFoodItemClick(foodModel)
+            }
+            binding.deleteItem.setOnClickListener {
+                listener.onFoodItemBackClick(foodList.indexOf(foodModel))
+
+            }
 
             Glide.with(binding.root)
                 .load(foodModel.foodImg)
@@ -50,5 +59,4 @@ class FoodAdapter(
     ) {
         holder.bind(foodList[position])
     }
-
 }

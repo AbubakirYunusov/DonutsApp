@@ -44,5 +44,4 @@ class OnBoardingScreenFragment : Fragment() {
 
     private fun goToMainScreen() =
         findNavController().navigate(R.id.action_onBoardingScreenFragment_to_mainScreenFragment)
-
 }

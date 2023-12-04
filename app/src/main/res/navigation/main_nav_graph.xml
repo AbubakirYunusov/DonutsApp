@@ -10,13 +10,45 @@
         android:name="com.example.donutsapp.presentation.on_boarding.OnBoardingScreenFragment"
         android:label="fragment_on_boarding_screen"
         tools:layout="@layout/fragment_on_boarding_screen">
+
         <action
             android:id="@+id/action_onBoardingScreenFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment" />
     </fragment>
+
     <fragment
+
         android:id="@+id/mainScreenFragment"
         android:name="com.example.donutsapp.presentation.main_screen.MainScreenFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main_screen" >
+
+        <action
+            android:id="@+id/action_mainScreenFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_foodBasketFragment"
+            app:destination="@id/foodBasketFragment" />
+    </fragment>
+
+    <fragment
+
+        android:id="@+id/foodDetailsFragment"
+        android:name="com.example.donutsapp.presentation.details_screen.FoodDetailsFragment"
+        android:label="fragment_food_details"
+        tools:layout="@layout/fragment_food_details" >
+        <action
+            android:id="@+id/action_foodDetailsFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodBasketFragment"
+        android:name="com.example.donutsapp.presentation.cart_screen.FoodBasketFragment"
+        android:label="fragment_food_basket"
+        tools:layout="@layout/fragment_food_basket" >
+        <action
+            android:id="@+id/action_foodBasketFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
+
 </navigation>
