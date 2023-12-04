@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Donuts App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_App">Sweets Ordering App</string>
+    <string name="text_Here">Order your favorite desert \n Here!</string>
+    <string name="text_Get">Get Started</string>
+    <string name="text_search">search …</string>
+
+    <string name="text_all">All</string>
+    <string name="text_sweets">Sweets</string>
+    <string name="text_cakes">Cakes</string>
+    <string name="text_candey">Candey</string>
+
+    <string name="text_flavoured">Flavoured cupcakes\nwith special icing</string>
+    <string name="text_cup">Cup Cake</string>
+    <string name="text_5">$5</string>
+
+</resources>
