@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.animeapp.R
+import com.example.animeapp.databinding.FoodBasketItemBinding
 import com.example.animeapp.databinding.FoodItemBinding
 import com.example.donutsapp.data.model.FoodModel
 
-class FoodAdapter(
+class FoodBasketAdapter(
     private val listener: FoodsitemClickListener
-) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+) : RecyclerView.Adapter<FoodBasketAdapter.FoodViewHolder>() {
 
     private var foodList = mutableListOf<FoodModel>()
 
@@ -20,7 +21,7 @@ class FoodAdapter(
         notifyDataSetChanged()
     }
 
-    inner class FoodViewHolder(private val binding: FoodItemBinding) :
+    inner class FoodViewHolder(private val binding: FoodBasketItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(foodModel: FoodModel) {
 
@@ -30,6 +31,10 @@ class FoodAdapter(
 
             binding.cardView.setOnClickListener {
                 listener.onFoodItemClick(foodModel)
+            }
+            binding.deleteItem.setOnClickListener {
+                listener.onFoodItemBackClick(foodList.indexOf(foodModel))
+
             }
 
             Glide.with(binding.root)
@@ -41,18 +46,20 @@ class FoodAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int,
     ): FoodViewHolder {
-        val binding = FoodItemBinding.bind(
-            LayoutInflater.from(parent.context).inflate(R.layout.food_item, parent, false)
+        val binding = FoodBasketItemBinding.bind(
+            LayoutInflater.from(parent.context).inflate(R.layout.food_basket_item, parent, false)
         )
         return FoodViewHolder(binding)
     }
 
+    override fun onBindViewHolder(
+        holder: FoodViewHolder,
+        position: Int,
+    ){
+        holder.bind(foodList[position])
+
+    }
+
     override fun getItemCount(): Int = foodList.size
 
-    override fun onBindViewHolder(
-        holder: FoodAdapter.FoodViewHolder,
-        position: Int,
-    ) {
-        holder.bind(foodList[position])
-    }
 }

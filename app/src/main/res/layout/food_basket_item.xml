@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -76,12 +76,13 @@
             android:src="@drawable/original" />
 
         <ImageView
+            android:id="@+id/deleteItem"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="end"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="18dp"
-            android:src="@drawable/vector_12" />
+            android:src="@drawable/vector" />
 
     </androidx.cardview.widget.CardView>
 

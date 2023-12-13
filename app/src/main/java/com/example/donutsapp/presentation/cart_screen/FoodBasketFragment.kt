@@ -13,6 +13,7 @@ import com.example.animeapp.databinding.FragmentFoodBasketBinding
 import com.example.donutsapp.data.model.FoodModel
 import com.example.donutsapp.data.preferences.FoodCartSharedPref
 import com.example.donutsapp.presentation.adapter.FoodAdapter
+import com.example.donutsapp.presentation.adapter.FoodBasketAdapter
 import com.example.donutsapp.presentation.adapter.FoodsitemClickListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -27,8 +28,8 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
         FoodCartSharedPref(requireContext())
     }
 
-    private val adapter: FoodAdapter by lazy {
-        FoodAdapter(this)
+    private val adapter: FoodBasketAdapter by lazy {
+        FoodBasketAdapter(this)
     }
 
     private var foodList: List<FoodModel> = emptyList()
@@ -49,7 +50,7 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
     private fun setupViews() {
         val savedFoodList = sharedPreferences.getAllSavedFoods()
         adapter.updateFoodList(savedFoodList)
-        binding.mainRv.adapter = adapter
+        binding.mainBasketRv.adapter = adapter
     }
 
     override fun onFoodItemClick(foodModel: FoodModel) {
@@ -90,7 +91,7 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
 
 
     private fun showConfirmDeleteFoodDialog() {
-        if (binding.mainRv.isNotEmpty()) {
+        if (binding.mainBasketRv.isNotEmpty()) {
 
             val alertDialog = MaterialAlertDialogBuilder(requireContext())
             alertDialog.setMessage(resources.getString(R.string.text_do_all))
@@ -109,20 +110,20 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
         val listOfNotes = sharedPreferences.getAllSavedFoods()
         foodList = listOfNotes.toMutableList()
         adapter.updateFoodList(listOfNotes)
-        binding.mainRv.adapter = adapter
+        binding.mainBasketRv.adapter = adapter
         if (listOfNotes.isNotEmpty()) {
             binding.apply {
-                mainRv.visibility = View.VISIBLE
+                mainBasketRv.visibility = View.VISIBLE
             }
         } else {
-            binding.mainRv.visibility = View.GONE
+            binding.mainBasketRv.visibility = View.GONE
         }
     }
 
     private fun deleteAllSavedNotes() {
         sharedPreferences.deleteAllFood()
         adapter.updateFoodList(emptyList())
-        binding.mainRv.visibility = View.GONE
+        binding.mainBasketRv.visibility = View.GONE
     }
 
     private fun showToastManager(massage: String) {

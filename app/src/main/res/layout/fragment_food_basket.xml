@@ -75,12 +75,12 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mainRv"
+            android:id="@+id/mainBasketRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/food_item" />
+            tools:listitem="@layout/food_basket_item" />
 
     </LinearLayout>
 
