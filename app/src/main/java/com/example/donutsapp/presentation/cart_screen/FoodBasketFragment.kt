@@ -68,7 +68,7 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
         binding.iconbasket.setOnClickListener {
             showConfirmDeleteFoodDialog()
         }
-        binding.foodSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.foodBasketSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -83,10 +83,10 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
     }
 
     private fun filterFood(title: String) {
-        val filterNote = foodList.filter { name ->
+        val filterFood = foodList.filter { name ->
             name.foodName.contains(title, ignoreCase = true)
         }
-        adapter.updateFoodList(filterNote)
+        adapter.updateFoodList(filterFood)
     }
 
 
@@ -107,11 +107,11 @@ class FoodBasketFragment : Fragment(), FoodsitemClickListener {
     }
 
     private fun setupViewsAndAdapter() {
-        val listOfNotes = sharedPreferences.getAllSavedFoods()
-        foodList = listOfNotes.toMutableList()
-        adapter.updateFoodList(listOfNotes)
+        val listOfFood = sharedPreferences.getAllSavedFoods()
+        foodList = listOfFood.toMutableList()
+        adapter.updateFoodList(listOfFood)
         binding.mainBasketRv.adapter = adapter
-        if (listOfNotes.isNotEmpty()) {
+        if (listOfFood.isNotEmpty()) {
             binding.apply {
                 mainBasketRv.visibility = View.VISIBLE
             }
